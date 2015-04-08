@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1428440130 source:c:\d\programacao\estruturas 2\trabalho1_estruturas2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1428453544 source:d:\downloads\trabalho1_estruturas2\trabalho1_estruturas2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
