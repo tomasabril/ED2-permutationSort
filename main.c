@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define TAM 12
+#define TAM 14
 char nomes[TAM][80];
 int fim = 0;
 long trocas = 0;
@@ -26,7 +26,7 @@ int main()
     soLetra();
     check();
     permuta(0);
-    printf("\nFIM\n TROCAS:      %d\n COMPARACOES: %d \n", trocas, comparacoes);
+    printf("\nFIM\n %d nomes\n TROCAS:      %d\n COMPARACOES: %d \n", TAM, trocas, comparacoes);
 
     return 0;
 }
