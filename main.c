@@ -7,11 +7,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define TAM 14
+#define TAM 12
 char nomes[TAM][80];
 int fim = 0;
-int trocas = 0;
-int comparacoes = 0;
+long trocas = 0;
+long comparacoes = 0;
 
 int check();
 void troca(int i, int j);
