@@ -1,13 +1,12 @@
-/// Tomas Abril
-/// Diego Wesley Braga
 /// Daniel Silva Curi
-
+/// Diego Wesley Braga
+/// Tomas Abril
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#define TAM 13
+#define TAM 12 // número de nomes a ordenar
 
 char **nomes;
 int fim = 0;
@@ -19,24 +18,22 @@ void troca(int i, int j);
 void permuta(int i);
 void lerArq();
 void soLetra();
+void criaMatriz();
 
 int main()
 {
-    int i = 0;
-
     criaMatriz();
-
     lerArq();
-
     check();
-
     permuta(0);
 
-    printf("\nFIM\n %d nomes\n TROCAS:      %llu\n COMPARACOES: %llu \n", TAM,  trocas, comparacoes);
+    printf("\nFIM \n %d Nomes \n TROCAS:      %llu \n COMPARACOES: %llu \n", TAM,  trocas, comparacoes);
 
     return 0;
 }
 
+
+/// Aloca uma matriz de caracteres
 void criaMatriz()
 {
     int i;
@@ -48,36 +45,35 @@ void criaMatriz()
     }
 }
 
+/// Le o arquivo com os nomes
 void lerArq()
 {
     char url[]="saida.txt";
-    char leitor[80], palavra[80];
-    int i, contador = 0;
+    char palavra[80];
+    int contador = 0;
     FILE *arq;
     arq = fopen(url, "r");
 
     while(!feof(arq) && contador < TAM) {
         if( fgets(palavra, 80, arq) != NULL ) {
             strcpy(nomes[contador], palavra);
-
-            // printf("ola %s", nomes[contador]);
-
             contador++;
         }
     }
-    puts("leu arquivo\n");
+    puts("Arquivo lido. Ordenando...\n");
 
     fclose(arq);
 }
 
+/// Checa se um nome deverá vir antes de seu predecessor
 int check()
 {
     int i = 0;
 
     while(i < TAM-1) {
         comparacoes++;
-        if(strcmp(nomes[i], nomes[i+1]) > 0) {
-            return 1;
+        if(strcmp(nomes[i], nomes[i+1]) > 0) { // caso o nome seguinte seja
+            return 1;                          // menor que o atual, retorna 1
         }
         i++;
     }
@@ -85,6 +81,7 @@ int check()
     return 0;
 }
 
+/// Troca dois nomes de posição (ponteiros)
 void troca(int i, int j)
 {
     char *aux;
@@ -95,20 +92,21 @@ void troca(int i, int j)
     trocas++;
 }
 
+/// Permuta os nomes
 void permuta(int i)
 {
     int j;
     int k = 0;
+
     if (i == TAM-1) {
-        if(!check()) {
-            fim = 1;
+        if(!check()) {          // caso esteja ordenado
+            fim = 1;            // termine
             while(k < TAM) {
-                printf("%s", nomes[k]);
+                printf("%s", nomes[k]); // e imprima os nomes
                 k++;
             }
         }
     }
-
 
     else {
         for (j = i; j <= TAM-1; j++) {
@@ -119,4 +117,3 @@ void permuta(int i)
         }
     }
 }
-
